@@ -49,10 +49,12 @@ public class PdfBrowserViewer extends Component {
 
     public void setHeight(String height) {
         getElement().setAttribute("height", height);
+        getElement().getStyle().set("height", height);
     }
 
     public void setWidth(String width) {
         getElement().setAttribute("width", width);
+        getElement().getStyle().set("width", width);
     }
 
     @Override

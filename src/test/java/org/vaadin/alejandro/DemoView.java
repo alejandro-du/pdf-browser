@@ -15,7 +15,6 @@ public class DemoView extends Div {
 
         PdfBrowserViewer viewer = new PdfBrowserViewer(streamResource);
         viewer.setHeight("100%");
-        viewer.getElement().getStyle().set("height", "100%");
         add(viewer);
         setHeight("100%");
     }
