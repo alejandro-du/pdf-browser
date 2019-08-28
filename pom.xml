@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.vaadin.alejandro</groupId>
-    <artifactId>pdf_browser</artifactId>
-    <version>1.0.0-alpha1</version>
+    <artifactId>pdf-browser</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
     <name>pdf-browser</name>
-    <description>Integration of pdf-browser-viewer for Vaadin 10</description>
+    <description>Integration of pdf-browser-viewer for Vaadin</description>
 
     <properties>
-        <vaadin.version>10.0.0.alpha16</vaadin.version>
+        <vaadin.version>14.0.2</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -21,6 +21,18 @@
     <organization>
         <name>Alejandro Duarte</name>
     </organization>
+
+    <scm>
+        <url>https://github.com/alejandro-du/pdf-browser.git</url>
+        <connection>scm:git:https://github.com/alejandro-du/pdf-browser.git</connection>
+        <developerConnection>scm:git:https://github.com/alejandro-du/pdf-browser.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/alejandro-du/pdf-browser/issues</url>
+    </issueManagement>
 
     <licenses>
         <license>
@@ -68,7 +80,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
         </dependency>
-        <!-- The following dependency is generated using webjars.org. If 
+        <!-- The following dependency is generated using webjars.org. If
              it does not resolve, you can generate it using the webjars.org
              REST API, e.g. using curl:
 
@@ -80,6 +92,10 @@
             <version>1.0.6</version>
         </dependency>
         <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>flow-server-compatibility-mode</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
@@ -89,7 +105,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -109,15 +124,42 @@
             </plugin>
 
             <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-frontend</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.7.v20160115</version>
+                <version>9.4.15.v20190215</version>
                 <configuration>
                     <scanIntervalSeconds>-1</scanIntervalSeconds>
-                    <!-- Use test scope because the UI/demo classes are in 
+                    <!-- Use test scope because the UI/demo classes are in
                         the test package. -->
                     <useTestScope>true</useTestScope>
+                    <supportedPackagings>
+                        <supportedPackaging>jar</supportedPackaging>
+                    </supportedPackagings>
+                    <webAppConfig>
+                        <!-- This is only needed to be able to unzip webjars
+                            directly into src/test/webjar-debug and modify them for testing -->
+                        <resourceBase>src/test/webjar-debug/META-INF/resources</resourceBase>
+                    </webAppConfig>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
             </plugin>
         </plugins>
     </build>
