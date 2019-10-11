@@ -19,7 +19,14 @@ public class PdfBrowserViewer extends Component {
 
     private StreamRegistration streamRegistration;
 
+    public PdfBrowserViewer() { }
+
     public PdfBrowserViewer(StreamResource streamResource) {
+        setStreamResource(streamResource);
+    }
+
+    public void setStreamResource(StreamResource streamResource) {
+        unregister();
         streamRegistration = VaadinSession.getCurrent().getResourceRegistry().registerResource(streamResource);
         URI uri = StreamResourceRegistry.getURI(streamResource);
         setFile(uri.toASCIIString());
@@ -62,6 +69,10 @@ public class PdfBrowserViewer extends Component {
     @Override
     protected void onDetach(DetachEvent detachEvent) {
         super.onDetach(detachEvent);
+        unregister();
+    }
+
+    private void unregister() {
         if (streamRegistration != null) {
             streamRegistration.unregister();
         }
