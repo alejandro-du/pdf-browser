@@ -22,3 +22,9 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### General ###
+node_modules
+package*.json
+webpack.config.js
+webpack.generated.js
