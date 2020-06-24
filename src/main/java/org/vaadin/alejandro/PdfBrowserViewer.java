@@ -1,7 +1,5 @@
 package org.vaadin.alejandro;
 
-import java.net.URI;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.Tag;
@@ -12,14 +10,17 @@ import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.StreamResourceRegistry;
 import com.vaadin.flow.server.VaadinSession;
 
-@Tag("pdf-browser-viewer")
-@JsModule("@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js")
+import java.net.URI;
+
 @NpmPackage(value = "@lrnwebcomponents/pdf-browser-viewer", version = "^2.1.4")
+@JsModule("@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js")
+@Tag("pdf-browser-viewer")
 public class PdfBrowserViewer extends Component {
 
     private StreamRegistration streamRegistration;
 
-    public PdfBrowserViewer() { }
+    public PdfBrowserViewer() {
+    }
 
     public PdfBrowserViewer(StreamResource streamResource) {
         setStreamResource(streamResource);

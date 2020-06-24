@@ -23,7 +23,10 @@ dist/
 nbdist/
 .nb-gradle/
 
-### General ###
+#JRebel
+rebel.xml
+
+### Vaadin ###
 node_modules
 package*.json
 webpack.config.js
