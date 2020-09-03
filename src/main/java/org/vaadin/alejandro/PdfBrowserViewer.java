@@ -12,7 +12,7 @@ import com.vaadin.flow.server.VaadinSession;
 
 import java.net.URI;
 
-@NpmPackage(value = "@lrnwebcomponents/pdf-browser-viewer", version = "^2.1.4")
+@NpmPackage(value = "@lrnwebcomponents/pdf-browser-viewer", version = "2.1.4")
 @JsModule("@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js")
 @Tag("pdf-browser-viewer")
 public class PdfBrowserViewer extends Component {
