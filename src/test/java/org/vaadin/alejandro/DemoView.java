@@ -12,6 +12,18 @@ public class DemoView extends Div {
     public DemoView() {
         StreamResource streamResource = new StreamResource(
                 "report.pdf", () -> getClass().getResourceAsStream("/report.pdf"));
+        
+        /* Or:
+        StreamResource streamResource = new StreamResource(
+            "report.pdf", () -> {
+                try {
+                  return FileUtils.openInputStream(new File("/Users/alejandro/report.pdf"));
+                } catch (IOException e) {
+                  e.printStackTrace();
+                }
+                return null;
+            });
+        */
 
         PdfBrowserViewer viewer = new PdfBrowserViewer(streamResource);
         viewer.setHeight("100%");
