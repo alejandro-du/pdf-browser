@@ -9,16 +9,14 @@
     <description>Integration of pdf-browser-viewer for Vaadin</description>
 
     <properties>
-        <vaadin.version>23.2.3</vaadin.version>
+        <vaadin.version>24.0.1</vaadin.version>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <drivers.dir>${project.basedir}/drivers</drivers.dir>
-
-        <jetty.version>9.4.28.v20200408</jetty.version>
     </properties>
 
     <organization>
@@ -94,7 +92,6 @@
             <groupId>com.vaadin</groupId>
             <!-- Replace artifactId with vaadin-core to use only free components -->
             <artifactId>vaadin-core</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -107,9 +104,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -149,7 +146,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty.version}</version>
+                <version>11.0.14</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <!-- Use test scope because the UI/demo classes are in
